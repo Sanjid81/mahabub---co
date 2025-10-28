@@ -1,1 +1,345 @@
- /* Navbar */
+.navbar {
+    border-bottom: 1px solid #FFFFFF33;
+
+    .container {
+        .nav-container {
+            max-width: 1800px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 0;
+
+            .nav-wraper {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+
+                .nav-first-half {
+                    display: flex;
+                    align-items: center;
+                    gap: 40px;
+
+                    .nav-menu {
+                        display: flex;
+                        align-items: center;
+
+                        .main-manu-list {
+                            list-style: none;
+                            display: flex;
+                            gap: 30px;
+                            position: relative;
+
+                            li {
+                                position: relative;
+
+                                a {
+                                    text-decoration: none;
+                                    @extend .navbar-text;
+                                    color: var(--color-white);
+                                    // font-weight: 500;
+                                    // font-size: 16px;
+                                    // line-height: 24px;
+                                    transition: color 0.3s;
+
+                                    &:hover {
+                                        color: #FF6600;
+                                    }
+                                }
+
+                                &.sub-nemu {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 5px;
+                                    cursor: pointer;
+
+                                    svg {
+                                        transition: transform 0.3s ease;
+                                        stroke: white;
+                                    }
+
+                                    .sub-menu-list {
+                                        position: absolute;
+                                        top: 100%;
+                                        left: 0;
+                                        background: #1a1a1a;
+                                        border: 1px solid #555;
+                                        list-style: none;
+                                        padding: 10px;
+                                        margin-top: 10px;
+                                        opacity: 0;
+                                        visibility: hidden;
+                                        z-index: 10;
+                                        min-width: 300px;
+                                        transition: all 0.3s ease;
+                                    }
+
+                                    // This ensures submenu stays visible when hovering parent OR submenu itself
+                                    &:hover,
+                                    .sub-menu-list:hover {
+                                        svg {
+                                            transform: rotate(180deg);
+                                            stroke: #FF6600;
+                                        }
+
+                                        .sub-menu-list {
+                                            opacity: 1;
+                                            visibility: visible;
+                                        }
+                                    }
+
+                                    .sub-menu-list li {
+                                        margin-bottom: 10px;
+
+                                        a {
+                                            color: #e2d5d5;
+                                            font-weight: 500;
+                                            font-size: 16px;
+                                            line-height: 24px;
+
+                                            &:hover {
+                                                color: #FF6600;
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+                .nav-sec-half {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                }
+            }
+
+            .hamburger {
+                display: none;
+            }
+
+            .small-nav-wraper {
+                display: none;
+            }
+
+            /* Responsive Styles */
+            @media (max-width: 1030px) {
+                .nav-wraper {
+                    .nav-first-half {
+                        .nav-menu {
+                            display: none;
+                        }
+                    }
+
+                    .nav-sec-half {
+                        display: none;
+                    }
+                }
+
+                .small-nav-wraper {
+                    display: none;
+                    position: absolute;
+                    top: 103px;
+                    left: 0;
+                    width: 100%;
+                    // height: 100vh;
+                    height: calc(100vh - 103px);
+                    background-color: #1a1a1a;
+                    flex-direction: column;
+                    padding: 12px 20px 40px;
+                    z-index: 9;
+                    overflow-y: auto;
+
+                    &.active {
+                        display: flex;
+                        flex-direction: column;
+
+                        .small-nav-container {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            // height: calc(100vh - 103px);
+                            height: 100vh;
+                            // gap: 30px;
+
+                            .small-nav-first-half {
+                                display: block;
+
+                                .nav-menu {
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 15px;
+
+                                    .main-manu-list {
+                                        list-style: none;
+                                        padding: 0;
+                                        margin: 0;
+                                        display: flex;
+                                        flex-direction: column;
+                                        // gap: 10px;
+
+                                        li {
+                                            position: relative;
+
+                                            &:not(:nth-child(2)) {
+                                                padding: 18px 0;
+                                            }
+
+                                            &:nth-child(2) {
+                                                padding-top: 18px;
+                                            }
+
+                                            // padding: 18px 0;
+
+
+
+                                            &:not(:last-child) {
+                                                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                                            }
+
+                                            a {
+                                                font-size: 16px;
+                                                font-family: var(--font-primary);
+                                                font-weight: 500;
+                                                line-height: 20px;
+                                                letter-spacing: 0;
+                                                color: var(--color-white);
+
+                                               
+
+                                                text-decoration: none;
+
+                                                &:hover {
+                                                    color: #FF6600;
+                                                }
+                                            }
+
+                                            &.sub-nemu {
+                                                cursor: pointer;
+                                                position: relative;
+                                                overflow: hidden;
+                                                margin-bottom: 5px;
+
+
+                                                a {
+                                                    display: flex;
+                                                    gap: 5px;
+                                                    align-items: center;
+                                                    color: var(--light-bg);
+                                                    font-weight: 400;
+                                                    text-decoration: none;
+                                                    font-size: 14px;
+                                                    line-height: 19px;
+
+                                                    &:hover {
+                                                        color: #ff6600;
+                                                    }
+                                                }
+
+                                                svg {
+                                                    transition: transform 0.3s ease;
+                                                    stroke: white;
+                                                }
+
+                                                .sub-menu-list {
+                                                    list-style: none;
+                                                    padding-left: 0;
+                                                    margin-top: 18px;
+                                                    // margin: 0;
+                                                    max-height: 0;
+                                                    overflow: hidden;
+                                                    transition: max-height 0.3s ease;
+                                                    background: rgba(255, 255, 255, 0.06);
+                                                    border-radius: 5px;
+                                                    border-bottom: none;
+
+
+
+                                                    li {
+                                                        border-bottom: 2px solid rgba(0, 0, 0, 1);
+
+                                                        padding: 12px 12px;
+
+                                                        a {
+                                                            display: block;
+                                                            // padding: 12px;
+                                                            font-size: 14px;
+                                                            color: #e2d5d5;
+                                                            text-decoration: none;
+
+                                                            &:hover {
+                                                                color: #ff6600;
+                                                                background: rgba(255, 102, 0, 0.1);
+                                                            }
+                                                        }
+                                                    }
+                                                }
+
+                                                &.active {
+                                                    svg {
+                                                        transform: rotate(180deg);
+                                                        stroke: #ff6600;
+                                                    }
+
+                                                    .sub-menu-list {
+                                                        max-height: 500px;
+                                                        // margin-top: 18px;
+                                                    }
+                                                }
+                                            }
+
+
+                                        }
+                                    }
+                                }
+                            }
+
+                            .small-nav-sec-half {
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+
+                                .social-media {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 6px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+
+                .hamburger {
+                    display: block;
+                    cursor: pointer;
+
+                    svg.cross {
+                        display: none;
+                    }
+
+                    &.active svg.hamburger-icon {
+                        display: none;
+                    }
+
+                    &.active svg.cross {
+                        display: block;
+                    }
+                }
+
+            }
+
+
+
+
+
+        }
+
+
+    }
+}

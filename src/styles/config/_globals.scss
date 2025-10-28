@@ -4,8 +4,7 @@
     box-sizing: border-box;
     font-family: $font-body;
     background: transparent;
-    border: none;
-    outline: none;
+
 }
 
 html {
@@ -32,6 +31,8 @@ img {
 
 body {
     overflow-x: hidden;
+    outline: none; // keyboard outline remove
+    -webkit-tap-highlight-color: transparent;
 
     &.popup-open {
         overflow-y: hidden !important;
@@ -125,39 +126,41 @@ button {
 
 
 .primary-button {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  width: fit-content;
-  justify-content: center;
-  background: #FFFFFF;
-  color: var(--text-light);
-  padding: 6px 6px 6px 32px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  a {
-    // color: inherit;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    width: fit-content;
+    justify-content: center;
+    background: #FFFFFF;
+    color: var(--text-light);
+    padding: 6px 6px 6px 32px;
+    border-radius: 50px;
     text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
     transition: all 0.3s ease;
-  }
 
-  svg {
-    transition: all 0.3s ease;
-  }
-
-  &:hover {
-    background-color: var(--primary-red);
     a {
-      transform: translateX(45px); // text moves right
-      color: #fff; // text turns white
+       color: var(--dark-bg);
+       @extend .button-text;
+        text-decoration: none;
+        transition: all 0.3s ease;
     }
 
     svg {
-      transform: translateX(-130px); // svg moves left
+        transition: all 0.3s ease;
     }
-  }
+
+    &:hover {
+        background-color: var(--primary-red);
+
+        a {
+            transform: translateX(45px); 
+            color: #fff; 
+        }
+
+        svg {
+            transform: translateX(-130px); // svg moves left
+        }
+    }
 }
